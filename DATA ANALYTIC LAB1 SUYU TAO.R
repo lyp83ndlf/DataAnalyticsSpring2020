@@ -48,5 +48,35 @@ hist(EPI)
 hist(EPI,seq(30,95,1),prob=TRUE)
 lines(density(EPI,na.rm=TRUE,bw=1))
 rug(EPI)
+#Cumulative Density Function
+plot(ecdf(EPI), do.points=FALSE, verticals=TRUE) 
+#Quantile-Quantile?
+par(pty="s") 
+qqnorm(EPI); qqline(EPI)
+#Simulated data from t-distribution:
+x <- rt(250, df = 5)
+qqnorm(x); qqline(x)
+#Make a Q-Q plot against the generating distribution by: x<-seq(30,95,1)
+qqplot(qt(ppoints(250), df = 5), x, xlab = "Q-Q plot for t dsn")
+qqline(x)
+
+help(distributions)
+#Landlock
+EPILand<-EPI[!Landlock]
+Eland <- EPILand[!is.na(EPILand)]
+#
+hist(ELand)
+hist(ELand, seq(30., 95., 1.0), prob=TRUE)
+summary(EPI) 	# stats
+fivenum(EPI,na.rm=TRUE)
+help(stem)
+stem(EPI)		 # stem and leaf plot
+help(hist)
+hist(EPI)
+hist(EPI, seq(30., 95., 1.0), prob=TRUE)
+help(lines)
+lines(density(EPI,na.rm=TRUE,bw=1.)) # or try bw=â€œSJâ€
+help(rug)
+rug(EPI) 
 
 
