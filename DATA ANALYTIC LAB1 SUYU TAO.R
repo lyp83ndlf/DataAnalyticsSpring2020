@@ -75,7 +75,7 @@ help(hist)
 hist(EPI)
 hist(EPI, seq(30., 95., 1.0), prob=TRUE)
 help(lines)
-lines(density(EPI,na.rm=TRUE,bw=1.)) # or try bw=â€œSJâ€
+lines(density(EPI,na.rm=TRUE,bw=1.)) 
 help(rug)
 rug(EPI) 
 
