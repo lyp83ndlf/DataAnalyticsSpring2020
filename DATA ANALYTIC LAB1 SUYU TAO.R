@@ -52,12 +52,28 @@ rug(EPI)
 plot(ecdf(EPI), do.points=FALSE, verticals=TRUE) 
 #Quantile-Quantile?
 par(pty="s") 
-qqnorm(EPI); qqline(EPI)
+qqnorm(EPI)
+qqline(EPI)
 #Simulated data from t-distribution:
 x <- rt(250, df = 5)
 qqnorm(x); qqline(x)
 #Make a Q-Q plot against the generating distribution by: x<-seq(30,95,1)
 qqplot(qt(ppoints(250), df = 5), x, xlab = "Q-Q plot for t dsn")
+qqline(x)
+plot(ecdf(EPI_data$EPI),do.points=FALSE,verticals = TRUE) 
+plot(ecdf(EPI_data$EPI),do.points=TRUE,verticals = TRUE) 
+par(pty="s") 
+help("qqnorm") 
+help("qqplot") 
+qqnorm(EPI_data$EPI) 
+qqline(EPI_data$EPI) 
+x <- seq(30,95,1) 
+x 
+x2 <-seq(30,95,2) 
+x2 
+x2 <-seq(30,96,2)
+x2 
+qqplot(qt(ppoints(250),df=5),x, xlab = "Q-Q plot") 
 qqline(x)
 
 help(distributions)
