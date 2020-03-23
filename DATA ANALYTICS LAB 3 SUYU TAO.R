@@ -9,9 +9,7 @@ heatmap(data_Matrix)
 
 set.seed(2)
 for(i in 1:40){
-  # flipping a coin and getting the data
   coin_Flip <- rbinom(1, size = 1, prob = 0.5)
-  # if the coin is "Heads", add a common pattern to that row,
   if(coin_Flip){
     data_Matrix[i, ] <- data_Matrix[i, ] + rep(c(0,3), each =5)
   }
@@ -88,15 +86,15 @@ library(ggmap)
 addrlist<-paste(addsample$ADDRESSONLY, "NY", addsample$ZIP.CODE, "US", sep=" ") 
 querylist<-geocode(addrlist) 
 matched<-(querylist$lat!=0 &&querylist$lon!=0) addsample<-cbind(addsample,querylist$lat,querylist$lon) 
-names(addsample)<-c("ADDRESSONLY","ZIPCODE","Latitude","Longitude")# correct the column na adduse<-merge(bronx1,addsample)
+names(addsample)<-c("ADDRESSONLY","ZIPCODE","Latitude","Longitude")
 adduse<-adduse[!is.na(adduse$Latitude),]
 mapcoord<-adduse[,c(2,3,24,25)]
 table(mapcoord$NEIGHBORHOOD)
 mapcoord$NEIGHBORHOOD <- as.factor(mapcoord$NEIGHBORHOOD)
-map <- get_map(location = 'Bronx', zoom = 12)#Zoom 11 or 12
+map <- get_map(location = 'Bronx', zoom = 12)
 ggmap(map) + geom_point(aes(x = mapcoord$Longitude, y = mapcoord$Latitude, size =1, color=mapcoord$NEIGHBORHOOD), data = mapcoord) +theme(legend.position = "none") 
 mapmeans<-cbind(adduse,as.numeric(mapcoord$NEIGHBORHOOD))
-colnames(mapmeans)[26] <- "NEIGHBORHOOD" #This is the right way of renaming.
+colnames(mapmeans)[26] <- "NEIGHBORHOOD" 
 keeps <- c("ZIP.CODE","NEIGHBORHOOD","TOTAL.UNITS","LAND.SQUARE.FEET","GROSS.SQUARE.FEET","SALE.PRICE","Latitude","Longitude") 
 mapmeans<-mapmeans[keeps]
 mapmeans$NEIGHBORHOOD<-as.numeric(mapcoord$NEIGHBORHOOD) 
@@ -179,7 +177,7 @@ sclass <- kmeans(swiss[2:6], 3)
 table(sclass$cluster, swiss[,1]) 
 
 #Lab1_nyt
-nyt1 <-  read.csv("/Users/suyu tao/Desktop/DataAnalytics/dds_ch2_nyt/nyt1.csv")
+nyt1 <-  read.csv("/Users/suyu tao/Desktop/DataAnalytics/nyt1.csv")
 nyt1<-nyt1[which(nyt1$Impressions>0 & nyt1$Clicks>0 & nyt1$Age>0),]
 nnyt1<-dim(nyt1)[1]		
 sampling.rate=0.9
