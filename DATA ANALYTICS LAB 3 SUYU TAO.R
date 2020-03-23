@@ -109,7 +109,7 @@ testid<-(1:nclass)[-trainid]
 kmax<-10
 knnpred<-matrix(NA,ncol=kmax,nrow=length(testid))
 knntesterr<-rep(NA,times=kmax)
-for (i in 1:kmax){		#
+for (i in 1:kmax){		
   knnpred[,i]<-knn(mapcoord[trainid,3:4],mapcoord[testid,3:4],cl=mapcoord[trainid,2],k=i)
   knntesterr[i]<-sum(knnpred[,i]!=mapcoord[testid,2])/length(testid)
 } 
@@ -188,7 +188,7 @@ testing<-setdiff(1:nnyt1,training)
 test<-subset(nyt1[testing,],select=c(Age,Impressions))
 cg<-nyt1$Gender[training]
 true.labels<-nyt1$Gender[testing]
-classif<-knn(train,test,cg,k=5) #
+classif<-knn(train,test,cg,k=5) 
 classif
 attributes(.Last.value) 
 
